@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.feihu.dao.ProductMapper">
+
+    <sql id="BaseColumnUpdateList">
+    ID,PRODUCTNAME,PROIMAGE,PRODUCTPRICE,ISPUT,ISHOT,CREATETIME,BRANDID,AREAIDS,TYPEIDS,STORYCOUNT
+    </sql>
+
+    <!--查询热销商品-->
+    <select id="findHotAll" resultType="com.feihu.entity.ProductInfo">
+            select productName,productPrice,proImage from shop_product where ishot=1
+    </select>
+    <!--根据类型id查询对应商品-->
+    <select id="findProductByTypeId" resultType="com.feihu.entity.ProductInfo" parameterType="com.feihu.entity.ProductInfo">
+            select * from shop_product
+            <where>
+                <if test="typeIds!=null and typeIds!=''">
+                  typeIds like  CONCAT ('%',#{typeIds},'%')
+                </if>
+            </where>
+    </select>
+
+    <!--根据商品id查询商品详情-->
+    <select id="findProductAllByProductId" resultType="com.feihu.entity.ProductInfo" parameterType="java.lang.Integer">
+          select * from shop_product where id=#{id}
+    </select>
+
+    <!--根据地区id查询地区名-->
+    <select id="findAreaNameByAreaIds" resultType="java.lang.String" parameterType="java.lang.Integer">
+          select areaName from shop_area where id=#{areaId}
+    </select>
+
+</mapper>
