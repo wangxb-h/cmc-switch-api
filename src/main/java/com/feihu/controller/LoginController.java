@@ -28,7 +28,7 @@ public class LoginController {
 
     //发送验证码
     @RequestMapping("verificationCode")
-    @ApiOperation("发送验证码")//API中说明的该类的作用
+    @ApiOperation("发送验证码")//API中说明的该类的作用 6666666
     @ApiImplicitParams({
             @ApiImplicitParam(name = "telephone",//参数名字
                     value = "用户手机号",//参数的描述
