@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 //全局处理异常
 @ControllerAdvice
 public class GlobalExceptionController {
-    //处理没有登录时的异常
+    ///处理没有登录时的异常
     @ExceptionHandler(NologinException.class) //
     @ResponseBody
     public JsonData handleNoLoginException(NologinException e){
